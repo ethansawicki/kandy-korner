@@ -1,6 +1,5 @@
 import './App.css';
-import {Outlet, Route, Routes} from "react-router-dom"
-import Locations from './components/Locations';
+import {Route, Routes} from "react-router-dom"
 import Header from './components/Header'
 import NavBar from './components/NavBar';
 import Home from './components/Home';

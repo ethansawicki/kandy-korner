@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Header from './Header'
 import Locations from './Locations'
 const Home = () => {

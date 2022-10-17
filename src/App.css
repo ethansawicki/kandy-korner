@@ -10,6 +10,12 @@ h1 {
 }
 
 .navBar {
-  align-content: center;
-  list-style-type: none;
+  display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+}
+
+.navbar-item {
+  flex-basis: 20%;
+    list-style-type: none;
 }
