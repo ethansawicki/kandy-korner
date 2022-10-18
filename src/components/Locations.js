@@ -1,4 +1,4 @@
-import { useState, useEffect, useNavigate } from "react"
+import { useState, useEffect } from "react"
 
 const Locations = () => {
   const [locations, setLocations] = useState([])
