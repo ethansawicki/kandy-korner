@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Locations from './Locations'
-import Products from './Products'
+import Products from './/products/Products'
 const Home = () => {
   return (
     <>
