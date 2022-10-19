@@ -21,8 +21,6 @@ const Products = () => {
   useEffect(
     () => {
       if(expensive){
-        const filteredCandyTypes = candyTypes.map((candy) => { return (candy.product.map(productTypes => productTypes.price))})
-        console.log(filteredCandyTypes)
         setFilteredCandy(candyTypes)
       } else {
         setFilteredCandy(candyTypes)
@@ -39,7 +37,7 @@ const Products = () => {
       </div>
       <div className='products-Container'>
       {
-        candyTypes.map(
+        filteredCandy.map(
           (productType) => {
             return (productType.product.map( 
               products => (
