@@ -34,13 +34,7 @@ const Locations = () => {
   return (
     <div className="locations-container">
         <h2 className="locations-header">Locations</h2>
-            {
-                state.map(states => {
-                    return (
-                        <h3 className="locations-state" key={states.id}>{states.state}</h3>
-                    )
-                })
-            }
+        <h3 className="locations-state" key={locations?.states?.id}>{locations?.states?.state}</h3>
             {
                 locations.map(
                     (location) => {
