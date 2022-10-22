@@ -2,12 +2,21 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./Products.css"
 
-const Products = () => {
+const Products = ({candySearchValue}) => {
   const [candyTypes, setCandy] = useState([])
   const [filteredCandy, setFilteredCandy] = useState([])
   const [expensive, setExpensive] = useState(false)
   const navigate = useNavigate()
 
+  useEffect(
+    () => {
+      const candySearch = candyTypes.filter(candy => {
+        return candy.name.toLowerCase().startsWith(candySearchValue.toLowerCase())
+      })
+      setFilteredCandy(candySearch)
+    },
+    [candySearchValue]
+  )
 
   useEffect(
     () => {
@@ -47,7 +56,7 @@ const Products = () => {
               <div key={productType.id}>
                 <h3>{productType.name}</h3>
                   <ul className='products-List'>
-                    <li>Price: {productType.price}/Unit</li>
+                    <li>Price: ${productType.price}/Unit</li>
                     <li>Type: {productType.productTypes.type}</li>
                   </ul>
               </div>  

@@ -32,25 +32,34 @@ const Locations = () => {
 
 
   return (
-    <div className="locations-container">
-        <h2 className="locations-header">Locations</h2>
-        <h3 className="locations-state" key={locations?.states?.id}>{locations?.states?.state}</h3>
+    <>
+        <div className="locations-container">
+            <h2 className="locations-header">Locations</h2>
             {
-                locations.map(
-                    (location) => {
-                        return (
-                            <div className="locations-list" key={location.id}>
-                                <ul>
-                                    <li>City: {location.city}</li>
-                                    <li>Address: {location.address}</li>
-                                    <li>Store Square Footage: {location.squareFt}</li>
-                                </ul>
-                            </div>
-                        )
+                state.map(states => {
+                    return (
+                        <h3 className="locations-state" key={states.id}>{states.state}</h3>
+                      )
                     }
                 )
             }
-    </div>
+                {
+                    locations.map(
+                        (location) => {
+                            return (
+                                <div className="locations-list" key={location.id}>
+                                    <ul>
+                                        <li>City: {location.city}</li>
+                                        <li>Address: {location.address}</li>
+                                        <li>Store Square Footage: {location.squareFt}</li>
+                                    </ul>
+                                </div>
+                            )
+                        }
+                    )
+                }
+        </div>
+    </>    
   )
 }
 
