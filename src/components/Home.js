@@ -2,16 +2,17 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Locations from './Locations'
 import NewProductsForm from './products/NewProductsForm'
-import { ProductSearch } from './products/ProductSearch'
-import ProductsParent from './products/ProductsParent'
+import AllProducts from './products/AllProducts'
+import ProductParent from './productSearch/ProductParent'
+
 const Home = () => {
   return (
     <>
     <Routes>
         <Route path='Locations' element={<Locations />} />
-        <Route path='Products' element={<ProductsParent />} />
+        <Route path='Products' element={<AllProducts />} />
         <Route path='Product/create' element={<NewProductsForm />} />
-        <Route path='ProductSearch' element={<ProductSearch />} />
+        <Route path='ProductSearch' element={<ProductParent />} />
     </Routes>
     </>
   )

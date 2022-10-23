@@ -1,12 +1,14 @@
 import React from 'react'
+import './productSearch.css'
 
-export const ProductSearch = ({candySearch}) => {
+export const ProductSearch = ({searchCandy}) => {
   return (
-    <div>
+    <div className='search-container'>
+      <label htmlFor='search-input'>Find A Candy</label>
         <input 
             onChange={
                 (change) => {
-                    candySearch(change.target.value)
+                    searchCandy(change.target.value)
                 }
             }
         className="search-input"
