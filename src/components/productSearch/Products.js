@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
 import "../products/Products.css"
 
-const Products = ({searchCandyTerms, searchCandy}) => {
+const Products = ({searchCandyTerms}) => {
   const [candyTypes, setCandy] = useState([])
   const [filteredCandy, setFilteredCandy] = useState([])
 
   useEffect(
     () => {
-        if(searchCandy) {
+        if(searchCandyTerms) {
             const findCandy = candyTypes.filter((candy) => {
                 return candy.price && candy.name.toLowerCase().startsWith(searchCandyTerms.toLowerCase())})
                 setFilteredCandy(findCandy)
-        } else if(searchCandy === "") {
-            setFilteredCandy(searchCandy)
         }
     },
-    [searchCandy, searchCandyTerms]
+    [candyTypes, searchCandyTerms]
   )
 
   useEffect(
@@ -30,18 +28,21 @@ const Products = ({searchCandyTerms, searchCandy}) => {
   )
 
   return (
-    <>
+    <div className='products-Container'>
       {
         filteredCandy.map(candy => {
-            return <div key={`candy--${candy.id}`}>
-                <ul>
-                    <li>{candy.name}</li>
-                    <li>{candy.price}</li>
-                </ul>
-            </div>
-        })
+            return (
+              <div key={`candy--${candy.id}`}>
+                <h3 className='products-Header'>{candy.name}</h3>
+                  <ul className='products-List'>
+                    <li>${candy.price}/Unit</li>
+                  </ul>
+              </div>
+            )
+          }
+        )
       }
-    </>
+    </div>
   )
 }
 

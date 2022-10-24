@@ -8,7 +8,9 @@ const ProductParent = () => {
   return (
     <>
         <ProductSearch searchCandy={setCandySearch} />
-        <Products searchCandy={setCandySearch} searchCandyTerms={candySearch} />
+      {
+        candySearch ? <Products searchCandy={setCandySearch} searchCandyTerms={candySearch} /> : null
+      } 
     </>
   )
 }
