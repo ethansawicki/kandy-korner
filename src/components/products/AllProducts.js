@@ -44,7 +44,7 @@ const AllProducts = () => {
           (productType) => {
             return (
               <div key={productType.id}>
-                <h3>{productType.name}</h3>
+                <h3 className='products-Header'>{productType.name}</h3>
                   <ul className='products-List'>
                     <li>Price: ${productType.price}/Unit</li>
                     <li>Type: {productType.productTypes.type}</li>
