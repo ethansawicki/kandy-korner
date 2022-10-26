@@ -4,7 +4,8 @@ import Locations from './Locations'
 import NewProductsForm from './products/NewProductsForm'
 import AllProducts from './products/AllProducts'
 import ProductParent from './productSearch/ProductParent'
-import EmployeeList from './employees/EmployeeList'
+import Employee from './employees/Employee'
+import NewEmployee from './employees/NewEmployee'
 
 const Home = () => {
   return (
@@ -14,7 +15,8 @@ const Home = () => {
         <Route path='Products' element={<AllProducts />} />
         <Route path='Product/create' element={<NewProductsForm />} />
         <Route path='ProductSearch' element={<ProductParent />} />
-        <Route path='Employees' element={<EmployeeList />} />
+        <Route path='Employees' element={<Employee />} />
+        <Route path='/Employee/Add' element={<NewEmployee />} />
     </Routes>
     </>
   )
