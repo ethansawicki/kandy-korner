@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Products from './Products'
+import AllProducts from '../products/AllProducts'
 import { ProductSearch } from './ProductSearch'
 
 const ProductParent = () => {
@@ -9,7 +9,7 @@ const ProductParent = () => {
     <>
         <ProductSearch searchCandy={setCandySearch} />
       {
-        candySearch ? <Products searchCandy={setCandySearch} searchCandyTerms={candySearch} /> : null
+        candySearch ? <AllProducts searchCandyTerms={candySearch} /> : null
       } 
     </>
   )

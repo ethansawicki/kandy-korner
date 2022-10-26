@@ -18,10 +18,8 @@ const EmployeeList = () => {
 
   useEffect(
     () => {
-      if(users) {
         const employeeUsers = users.filter(emp => emp)
         setFilteredUsers(employeeUsers)
-      }
     },
     [users]
   )

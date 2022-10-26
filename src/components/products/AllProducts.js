@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./Products.css"
 
-const AllProducts = () => {
+const AllProducts = ({searchCandyTerms}) => {
   const [candyTypes, setCandy] = useState([])
   const [filteredCandy, setFilteredCandy] = useState([])
-  const [expensive, setExpensive] = useState(false)
+  const [expensive, setExpensive] = useState()
   const navigate = useNavigate()
 
   useEffect(
@@ -30,12 +30,28 @@ const AllProducts = () => {
       },[candyTypes, expensive]
   )
 
+  useEffect(
+    () => {
+        if(searchCandyTerms) {
+            const findCandy = candyTypes.filter((candy) => {
+                return candy.price && candy.name.toLowerCase().startsWith(searchCandyTerms.toLowerCase())})
+                setFilteredCandy(findCandy)
+          }
+        },
+    [candyTypes, searchCandyTerms]
+  )
+
   return (
     <>
       <h2 className='products-Header'>Products</h2>
       <div className='btn-container'>
-      <button className='btn-expensive-true' onClick={() => setExpensive(true)} >Top Priced</button>
-      <button className='btn-expensive-false' onClick={() => setExpensive(false)} >Show All</button>
+        {
+          expensive
+          ?
+            <button className='btn-expensive-true' onClick={() => setExpensive(false)} >Show All</button>
+          :
+            <button className='btn-expensive-false' onClick={() => setExpensive(true)} >Top Priced</button>
+        }
       <button className='btn-new-product-form' onClick={() => navigate("/Product/create")}>Add New Product</button>
       </div>
       <div className='products-Container'>
