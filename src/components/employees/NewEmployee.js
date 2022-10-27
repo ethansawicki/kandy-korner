@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css"
 const NewEmployee = () => {
     const navigate = useNavigate()
     const [userId, setUserId] = useState([])
-    const [employeeId, setEmployeeId] = useState([])
     const [newStartDate, setStartDate] = useState(new Date())
     const [newUser, setNewUser] = useState({
         firstName: "",
@@ -16,31 +15,20 @@ const NewEmployee = () => {
 
     const [newEmployee, setNewEmployee] = useState({
         startDate: newStartDate,
-        payRate: 0
+        payRate: 0,
+        locationsId: 0
     })
 
     useEffect(
         () => {
             const fetchUserId = async () => {
                 const res = await fetch(`http://localhost:8088/users?_sort=id&_order=desc`)
-                const userRes = await res.json()
-                setUserId(userRes)
+                const resp = await res.json()
+                setUserId(resp)
             }
             fetchUserId()
         },
-        []
-    )
-
-    useEffect(
-        () => {
-            const fetchEmpId = async () => {
-                const res = await fetch(`http://localhost:8088/employees?_sort=id&_order=desc`)
-                const empRes = await res.json()
-                setEmployeeId(empRes)
-            }
-            fetchEmpId()
-        },
-        []
+        [newEmployee]
     )
 
     const handleClick = (event) => {
@@ -48,14 +36,16 @@ const NewEmployee = () => {
         const userToApi = {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
-            email: newUser.email,
-            employeesId: employeeId[0].id + 1
+            email: newUser.email
         }
+
         const employeeToApi = {
-            usersId: userId[0].id,
+            usersId: userId[0].id + 1,
             startDate: newEmployee.startDate,
-            payRate: newEmployee.payRate
+            payRate: newEmployee.payRate,
+            locationsId: newEmployee.locationsId
         }
+        
         const sendUser = async () => {
             const userPost = {
                 method: "POST",
@@ -65,8 +55,9 @@ const NewEmployee = () => {
                 body: JSON.stringify(userToApi)
             }
             const userRes = await fetch(`http://localhost:8088/users`, userPost)
-            await userRes.json()
+            const resp = await userRes.json()
         }
+
         const sendEmployee = async () => {
             const empPost = {
                 method: "POST",
@@ -78,6 +69,7 @@ const NewEmployee = () => {
             const empRes = await fetch(`http://localhost:8088/employees`, empPost)
             await empRes.json()
             navigate("/employees")
+            
         }
         sendUser()
         sendEmployee()
@@ -157,6 +149,55 @@ const NewEmployee = () => {
                         }
                     }
                 />
+            </div>
+        </fieldset>
+        <fieldset>
+            <div>
+                <input 
+                    type='radio'
+                    name='clearwater'
+                    id='clearwater'
+                    value='1'
+                    onChange={
+                        (event) => {
+                            const copy = {...newEmployee}
+                            copy.locationsId = +event.target.value
+                            setNewEmployee(copy)
+                        }
+                    }
+                    checked={newEmployee.locationsId === 1}
+                 />
+                <label htmlFor='clearwater'>Clearwater</label>
+                <input 
+                    type='radio'
+                    name='orlando'
+                    id='orlando'
+                    value='2'
+                    onChange={
+                        (event) => {
+                            const copy = {...newEmployee}
+                            copy.locationsId = +event.target.value
+                            setNewEmployee(copy)
+                        }
+                    }
+                    checked={newEmployee.locationsId === 2}
+                    />
+                <label htmlFor='orlando'>Orlando</label>
+                <input 
+                    type='radio'
+                    name='tampa'
+                    id='tampa'
+                    value='3'
+                    onChange={
+                        (event) => {
+                            const copy = {...newEmployee}
+                            copy.locationsId = +event.target.value
+                            setNewEmployee(copy)
+                        }
+                    }
+                    checked={newEmployee.locationsId === 3}
+                    />
+                <label htmlFor='tampa'>Tampa</label>
             </div>
         </fieldset>
         <button onClick={(click) => handleClick(click)}>Submit New Employee</button>
