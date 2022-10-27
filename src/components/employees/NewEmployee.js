@@ -1,22 +1,47 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 const NewEmployee = () => {
     const navigate = useNavigate()
+    const [userId, setUserId] = useState([])
+    const [employeeId, setEmployeeId] = useState([])
     const [newStartDate, setStartDate] = useState(new Date())
     const [newUser, setNewUser] = useState({
         firstName: "",
         lastName: "",
-        email: "",
-        employeesId: 0
+        email: ""
     })
 
     const [newEmployee, setNewEmployee] = useState({
-        usersId: newUser.id,
         startDate: newStartDate,
         payRate: 0
     })
+
+    useEffect(
+        () => {
+            const fetchUserId = async () => {
+                const res = await fetch(`http://localhost:8088/users?_sort=id&_order=desc`)
+                const userRes = await res.json()
+                setUserId(userRes)
+            }
+            fetchUserId()
+        },
+        []
+    )
+
+    useEffect(
+        () => {
+            const fetchEmpId = async () => {
+                const res = await fetch(`http://localhost:8088/employees?_sort=id&_order=desc`)
+                const empRes = await res.json()
+                setEmployeeId(empRes)
+            }
+            fetchEmpId()
+        },
+        []
+    )
 
     const handleClick = (event) => {
         event.preventDefault()
@@ -24,10 +49,10 @@ const NewEmployee = () => {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
-            employeesId: newUser.employeesId
+            employeesId: employeeId[0].id + 1
         }
         const employeeToApi = {
-            usersId: newUser.id,
+            usersId: userId[0].id,
             startDate: newEmployee.startDate,
             payRate: newEmployee.payRate
         }
@@ -40,7 +65,7 @@ const NewEmployee = () => {
                 body: JSON.stringify(userToApi)
             }
             const userRes = await fetch(`http://localhost:8088/users`, userPost)
-            const userId = await userRes.json()
+            await userRes.json()
         }
         const sendEmployee = async () => {
             const empPost = {
@@ -52,7 +77,7 @@ const NewEmployee = () => {
             }
             const empRes = await fetch(`http://localhost:8088/employees`, empPost)
             await empRes.json()
-            //navigate("/employees")
+            navigate("/employees")
         }
         sendUser()
         sendEmployee()
