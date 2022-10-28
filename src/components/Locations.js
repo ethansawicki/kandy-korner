@@ -9,7 +9,7 @@ const Locations = () => {
   useEffect(
     () => {
         const fetchLocation = async () => {
-            const res = await fetch(`http://localhost:8088/location?_expand=states`)
+            const res = await fetch(`http://localhost:8088/locations?_expand=states`)
             const locations = await res.json()
             setLocations(locations)
         }
