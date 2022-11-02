@@ -22,10 +22,7 @@ const CustomerList = () => {
         {
             customers.map(customer => <Customers 
                 key={customer.id}
-                id={customer.users.id}
-                firstName={customer.users.firstName}
-                lastName={customer.users.lastName}
-                email={customer.users.email}
+                customer={customer}
                 />
             )
         }
