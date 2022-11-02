@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const EmployeeList = () => {
+export const EmployeeList = () => {
   const [employees, setEmployees] = useState([])
   
 
@@ -37,5 +37,3 @@ const EmployeeList = () => {
     </div>
   )
 }
-
-export default EmployeeList

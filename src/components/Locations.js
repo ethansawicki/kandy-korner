@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const Locations = () => {
+export const Locations = () => {
   const [locations, setLocations] = useState([])
   const [state, setState] = useState([])
 
@@ -62,5 +62,3 @@ const Locations = () => {
     </>    
   )
 }
-
-export default Locations

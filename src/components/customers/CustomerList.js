@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Customers from './Customers'
 import './Customers.css'
 
-const CustomerList = () => {
+export const CustomerList = () => {
     const [customers, setCustomers] = useState([])
 
     useEffect(
@@ -29,5 +29,3 @@ const CustomerList = () => {
     </div>
   )
 }
-
-export default CustomerList

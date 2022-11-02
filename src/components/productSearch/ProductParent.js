@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import AllProducts from '../products/AllProducts'
+import { AllProducts } from '../products/AllProducts'
 import { ProductSearch } from './ProductSearch'
 
-const ProductParent = () => {
+export const ProductParent = () => {
   const [candySearch, setCandySearch] = useState("")
   
   return (
@@ -14,5 +14,3 @@ const ProductParent = () => {
     </>
   )
 }
-
-export default ProductParent

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const CustomerDetailView = () => {
+export const CustomerDetailView = () => {
     const navigate = useNavigate()
     const {customerId} = useParams()
     const [customerDetails, setCustomerDetails] = useState({
@@ -73,5 +73,3 @@ const CustomerDetailView = () => {
     </form>
   )
 }
-
-export default CustomerDetailView

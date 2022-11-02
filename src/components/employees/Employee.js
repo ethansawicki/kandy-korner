@@ -1,8 +1,8 @@
 import React from 'react'
-import EmployeeList from './EmployeeList'
+import {EmployeeList} from './EmployeeList'
 import { useNavigate } from 'react-router-dom'
 
-const Employee = () => {
+export const Employee = () => {
   const navigate = useNavigate()
   return (
     <div>
@@ -11,5 +11,3 @@ const Employee = () => {
     </div>
   )
 }
-
-export default Employee

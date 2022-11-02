@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-const NewEmployee = () => {
+export const NewEmployee = () => {
     const navigate = useNavigate()
     const [userId, setUserId] = useState([])
     const [newStartDate, setStartDate] = useState(new Date())
@@ -36,7 +36,8 @@ const NewEmployee = () => {
         const userToApi = {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
-            email: newUser.email
+            email: newUser.email,
+            isStaff: true
         }
 
         const employeeToApi = {
@@ -204,5 +205,3 @@ const NewEmployee = () => {
     </form>
   )
 }
-
-export default NewEmployee

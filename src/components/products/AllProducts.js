@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./Products.css"
 
-const AllProducts = ({searchCandyTerms}) => {
+export const AllProducts = ({searchCandyTerms}) => {
   const [candyTypes, setCandy] = useState([])
   const [filteredCandy, setFilteredCandy] = useState([])
   const [expensive, setExpensive] = useState()
   const navigate = useNavigate()
+
+  const userStorage = localStorage.getItem("kandy_user")
+  const localUser = JSON.parse(userStorage)
 
   useEffect(
     () => {
@@ -52,7 +55,13 @@ const AllProducts = ({searchCandyTerms}) => {
           :
             <button className='btn-expensive-false' onClick={() => setExpensive(true)} >Top Priced</button>
         }
-      <button className='btn-new-product-form' onClick={() => navigate("/Product/create")}>Add New Product</button>
+        {
+          localUser.staff
+          ?
+          <button className='btn-new-product-form' onClick={() => navigate("/Product/create")}>Add New Product</button>
+          :
+          null
+        }
       </div>
       <div className='products-Container'>
       {
@@ -64,6 +73,7 @@ const AllProducts = ({searchCandyTerms}) => {
                   <ul className='products-List'>
                     <li>Price: ${productType.price}/Unit</li>
                     <li>Type: {productType.productTypes.type}</li>
+                    <button>Purchase</button>
                   </ul>
               </div>  
             )
@@ -74,5 +84,3 @@ const AllProducts = ({searchCandyTerms}) => {
     </>
   )
 }
-
-export default AllProducts

@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const NewProductsForm = () => {
+export const NewProductsForm = () => {
     const [newProduct, updateProduct] = useState({
         name: "",
         price: 0,
@@ -135,5 +135,3 @@ const NewProductsForm = () => {
     </form>
   )
 }
-
-export default NewProductsForm
