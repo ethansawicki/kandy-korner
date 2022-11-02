@@ -2,18 +2,16 @@
     text-align: center;
 }
 
-.products-Container {
+.products {
     display: flex;
-    max-width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    flex-flow: row wrap;
+    flex-direction: column;
 }
 
-.products-List {
-    list-style: none;
+.product {
     text-align: center;
+    border: 1px;
+    padding: 0.7rem;
+    margin: 0.5 rem 0;
 }
 
 .btn-container {

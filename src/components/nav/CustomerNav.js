@@ -8,6 +8,7 @@ export const CustomerNav = () => {
             <li className="navbar-item"><Link to={"/Locations"}>Locations</Link></li>
             <li className="navbar-item"><Link to={"/products"}>Products</Link></li>
             <li className="navbar-item"><Link to={"/productSearch"}>Find A Product</Link></li>
+            <li className="navbar-item"><Link to={"/myorders"}>My Orders</Link></li>
             {
                     localStorage.getItem("kandy_user")
                         ? <li className="navbar__item navbar__logout">

@@ -1,0 +1,14 @@
+header{
+    text-align: center;
+    font-size: larger;
+}
+
+.purchases {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchase {
+    text-align: center;
+    gap: 20px;
+}

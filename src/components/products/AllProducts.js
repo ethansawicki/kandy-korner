@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Products } from './Products'
 import "./Products.css"
 
 export const AllProducts = ({searchCandyTerms}) => {
@@ -14,7 +15,7 @@ export const AllProducts = ({searchCandyTerms}) => {
   useEffect(
     () => {
       const fetchData = async () => {
-        const res = await fetch(`http://localhost:8088/product?_expand=productTypes&_sort=price`)
+        const res = await fetch(`http://localhost:8088/products?_expand=productTypes&_sort=price`)
         const productData = await res.json()
         setCandy(productData)
       }
@@ -63,24 +64,16 @@ export const AllProducts = ({searchCandyTerms}) => {
           null
         }
       </div>
-      <div className='products-Container'>
+      <article className='products'>
       {
         filteredCandy.map(
-          (productType) => {
-            return (
-              <div key={productType.id}>
-                <h3 className='products-Header'>{productType.name}</h3>
-                  <ul className='products-List'>
-                    <li>Price: ${productType.price}/Unit</li>
-                    <li>Type: {productType.productTypes.type}</li>
-                    <button>Purchase</button>
-                  </ul>
-              </div>  
-            )
-          }
+          (productType) => <Products 
+            key={`product--${productType.id}`}
+            productType={productType}
+          />
         )
       }
-      </div>
+      </article>
     </>
   )
 }

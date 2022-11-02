@@ -3,6 +3,7 @@ import { Outlet, Route, Routes } from 'react-router-dom'
 import {Locations} from '../Locations'
 import {AllProducts} from '../products/AllProducts'
 import {ProductParent} from '../productSearch/ProductParent'
+import { CustomerOrders } from '../purchases/CustomerOrders'
 
 
 export const CustomerView = () => {
@@ -17,6 +18,7 @@ export const CustomerView = () => {
         <Route path='Locations' element={<Locations />} />
         <Route path='Products' element={<AllProducts />} />
         <Route path='ProductSearch' element={<ProductParent />} />
+        <Route path='myorders' element={<CustomerOrders />} />
     </Routes>
   )
 }

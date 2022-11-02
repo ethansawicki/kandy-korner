@@ -23,7 +23,7 @@ export const NewProductsForm = () => {
                 },
                 body: JSON.stringify(productToDatabase)
             }
-            const res = await fetch(`http://localhost:8088/product?_expand=productTypes`, post)
+            const res = await fetch(`http://localhost:8088/products?_expand=productTypes`, post)
             await res.json()
             navigate("/products")
         }
